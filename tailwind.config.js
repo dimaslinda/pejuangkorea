@@ -7,7 +7,16 @@ export default {
       "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily: {
+            alata: ['Alata', 'sans-serif'],
+            arimo: ['Arimo', 'sans-serif'],
+        },
+        colors: {
+            'primary': '#C0CC30',
+            'secondary': '#1D1D1B',
+        }
+    },
   },
   plugins: [
     require('flowbite/plugin')
