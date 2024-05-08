@@ -51,4 +51,16 @@
         justify-content: center;
         align-items: center;
       }
+
+      .btn.active {
+        background-color: #C0CC30;
+        color: white;
+        border: #C0CC30;
+      }
+      .kolom {
+        display: none !important;
+      }
+      .show {
+        display: block !important;
+      }
 }

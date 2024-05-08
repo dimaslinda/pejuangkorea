@@ -15,4 +15,9 @@ class GeneralController extends Controller
     {
         return view('about');
     }
+
+    public function kelas()
+    {
+        return view('kelas');
+    }
 }

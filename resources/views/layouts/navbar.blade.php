@@ -1,6 +1,6 @@
 <nav class="fixed top-0 z-20 w-full border-b border-gray-200 bg-secondary font-alata start-0">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
-        <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{{ asset('img/general/logo.png') }}" class="h-16" alt="Flowbite Logo">
         </a>
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
@@ -24,7 +24,7 @@
             <ul
                 class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
                 <li>
-                    <a href="#"
+                    <a href="/"
                         class="block px-3 py-2 rounded text-secondary md:text-white hover:bg-secondary hover:text-primary md:hover:bg-transparent md:bg-transparent md:hover:text-primary md:p-0"
                         aria-current="page">Beranda</a>
                 </li>
@@ -34,7 +34,7 @@
                         Kami</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/kelas"
                         class="block px-3 py-2 rounded text-secondary md:text-white hover:bg-secondary hover:text-primary md:hover:bg-transparent md:bg-transparent md:hover:text-primary md:p-0">Kelas</a>
                 </li>
             </ul>

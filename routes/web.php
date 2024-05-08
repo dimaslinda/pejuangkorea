@@ -5,3 +5,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GeneralController::class, 'index']);
 Route::get('/about', [GeneralController::class, 'about']);
+Route::get('/kelas', [GeneralController::class, 'kelas']);
