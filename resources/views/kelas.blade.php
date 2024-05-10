@@ -44,7 +44,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -127,28 +127,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
-                                class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary kolom eps">
-                    <div>
-                        <img src="{{ asset('img/general/card.png') }}" alt="E-Course" class="object-cover w-full h-48">
-                    </div>
-                    <div class="flex flex-col justify-between p-5">
-                        <h3 class="text-xl font-bold text-secondary font-alata group-hover:text-white">Nama Kelas
-                            Video</h3>
-                        <p class="mt-2 text-secondary font-alata group-hover:text-white">
-                            Epstopik
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <div class="text-secondary font-alata group-hover:text-white">
-                                Rp. 100.000
-                            </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -169,7 +148,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -190,7 +169,28 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
+                                class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary kolom eps">
+                    <div>
+                        <img src="{{ asset('img/general/card.png') }}" alt="E-Course" class="object-cover w-full h-48">
+                    </div>
+                    <div class="flex flex-col justify-between p-5">
+                        <h3 class="text-xl font-bold text-secondary font-alata group-hover:text-white">Nama Kelas
+                            Video</h3>
+                        <p class="mt-2 text-secondary font-alata group-hover:text-white">
+                            Epstopik
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-secondary font-alata group-hover:text-white">
+                                Rp. 100.000
+                            </div>
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -210,7 +210,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -252,7 +252,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -273,7 +273,7 @@
                             <div class="text-secondary font-alata group-hover:text-white">
                                 Rp. 100.000
                             </div>
-                            <a href="#"
+                            <a href="/detailkelas"
                                 class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                         </div>
                     </div>
@@ -511,4 +511,53 @@
         <!-- Swiper -->
 
     </section>
+@endsection
+@section('skrip')
+    <script>
+        filterSelection("all")
+
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("kolom");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                removeClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+            }
+        }
+
+        function addClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {
+                    element.className += " " + arr2[i];
+                }
+            }
+        }
+
+        function removeClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            })
+        }
+    </script>
 @endsection

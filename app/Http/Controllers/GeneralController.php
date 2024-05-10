@@ -20,4 +20,9 @@ class GeneralController extends Controller
     {
         return view('kelas');
     }
+
+    public function detailkelas()
+    {
+        return view('detailkelas');
+    }
 }
