@@ -25,4 +25,14 @@ class GeneralController extends Controller
     {
         return view('detailkelas');
     }
+
+    public function detailzoom()
+    {
+        return view('detailzoom');
+    }
+
+    public function detailcourse()
+    {
+        return view('student.detailcourse');
+    }
 }
