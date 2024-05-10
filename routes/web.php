@@ -9,3 +9,4 @@ Route::get('/kelas', [GeneralController::class, 'kelas']);
 Route::get('/detailkelas', [GeneralController::class, 'detailkelas']);
 Route::get('/detailzoom', [GeneralController::class, 'detailzoom']);
 Route::get('/detailcourse', [GeneralController::class, 'detailcourse']);
+Route::get('/invoice', [GeneralController::class, 'invoice']);

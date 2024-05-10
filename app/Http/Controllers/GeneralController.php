@@ -35,4 +35,9 @@ class GeneralController extends Controller
     {
         return view('student.detailcourse');
     }
+
+    public function invoice()
+    {
+        return view('student.invoice');
+    }
 }
