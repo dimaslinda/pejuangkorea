@@ -18,3 +18,5 @@ Route::get('/dashboarduser', [StudentController::class, 'index']);
 Route::get('/kelaszoom', [StudentController::class, 'kelaszoom']);
 Route::get('/profil', [StudentController::class, 'profil']);
 Route::get('/ubahpassword', [StudentController::class, 'password']);
+Route::get('/pesanan', [StudentController::class, 'pesanan']);
+Route::get('/dalamproses', [StudentController::class, 'dalamproses']);

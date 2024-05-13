@@ -25,4 +25,14 @@ class StudentController extends Controller
     {
         return view('student.password');
     }
+
+    public function pesanan()
+    {
+        return view('student.pesanan');
+    }
+
+    public function dalamproses()
+    {
+        return view('student.dalamproses');
+    }
 }

@@ -35,7 +35,7 @@
                             Profil Saya
                         </div>
                     </a>
-                    <a href="#"
+                    <a href="/pesanan"
                         class="flex flex-row gap-2 border-[#4F4F4F] px-4 py-2 font-bold border-b-2 group text-secondary hover:text-white hover:bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-secondary group-hover:text-white" aria-hidden="true"
@@ -104,7 +104,8 @@
                                     class="object-cover w-full h-full rounded-l-lg">
                             </div>
                             <div class="flex flex-col p-5 md:w-1/2">
-                                <h3 class="text-xl lg:text-2xl text-secondary font-alata group-hover:text-white">
+                                <h3
+                                    class="text-xl lg:text-2xl text-secondary font-alata line-clamp-2 group-hover:text-white">
                                     Nama Kelas Zoom
                                 </h3>
                                 <div class="flex gap-2 mt-1">
@@ -133,7 +134,8 @@
                                     class="object-cover w-full h-full rounded-l-lg">
                             </div>
                             <div class="flex flex-col p-5 md:w-1/2">
-                                <h3 class="text-xl lg:text-2xl text-secondary font-alata group-hover:text-white">
+                                <h3
+                                    class="text-xl lg:text-2xl text-secondary font-alata line-clamp-2 group-hover:text-white">
                                     Nama Kelas Zoom
                                 </h3>
                                 <div class="flex gap-2 mt-1">
