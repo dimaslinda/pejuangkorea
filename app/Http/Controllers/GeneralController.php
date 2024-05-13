@@ -40,4 +40,14 @@ class GeneralController extends Controller
     {
         return view('student.invoice');
     }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function register()
+    {
+        return view('register');
+    }
 }

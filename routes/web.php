@@ -10,3 +10,5 @@ Route::get('/detailkelas', [GeneralController::class, 'detailkelas']);
 Route::get('/detailzoom', [GeneralController::class, 'detailzoom']);
 Route::get('/detailcourse', [GeneralController::class, 'detailcourse']);
 Route::get('/invoice', [GeneralController::class, 'invoice']);
+Route::get('/login', [GeneralController::class, 'login']);
+Route::get('/register', [GeneralController::class, 'register']);
