@@ -15,4 +15,14 @@ class StudentController extends Controller
     {
         return view('student.kelaszoom');
     }
+
+    public function profil()
+    {
+        return view('student.profil');
+    }
+
+    public function password()
+    {
+        return view('student.password');
+    }
 }

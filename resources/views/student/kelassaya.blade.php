@@ -8,7 +8,7 @@
 
             <div class="flex flex-col lg:min-h-screen md:flex-row">
                 <div class="flex flex-col w-full h-full md:w-1/2 xl:w-1/3">
-                    <a href="#" class="flex flex-row gap-2 px-4 py-2 font-bold text-white bg-primary">
+                    <a href="/dashboarduser" class="flex flex-row gap-2 px-4 py-2 font-bold text-white bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -20,7 +20,7 @@
                             Kelas
                         </div>
                     </a>
-                    <a href="#"
+                    <a href="/profil"
                         class="flex flex-row gap-2 px-4 py-2 font-bold group text-secondary hover:text-white hover:bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-secondary group-hover:text-white" aria-hidden="true"
