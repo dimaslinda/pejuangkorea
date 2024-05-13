@@ -4,10 +4,10 @@
             <img src="{{ asset('img/general/logo.png') }}" class="h-16" alt="Flowbite Logo">
         </a>
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-            <button type="button"
+            <a href="/login"
                 class="px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300">
                 Masuk / Daftar
-            </button>
+            </a>
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200
                 aria-controls="navbar-sticky"

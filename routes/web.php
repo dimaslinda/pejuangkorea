@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GeneralController::class, 'index']);
@@ -12,3 +13,6 @@ Route::get('/detailcourse', [GeneralController::class, 'detailcourse']);
 Route::get('/invoice', [GeneralController::class, 'invoice']);
 Route::get('/login', [GeneralController::class, 'login']);
 Route::get('/register', [GeneralController::class, 'register']);
+
+Route::get('/dashboarduser', [StudentController::class, 'index']);
+Route::get('/kelaszoom', [StudentController::class, 'kelaszoom']);
