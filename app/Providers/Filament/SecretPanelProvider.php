@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -26,10 +27,15 @@ class SecretPanelProvider extends PanelProvider
             ->default()
             ->id('secret')
             ->path('secret')
+            ->sidebarCollapsibleOnDesktop(true)
+            ->brandName('PejuangKorea')
+            ->brandLogo(asset('img/general/logo.png'))
+            ->brandLogoHeight('50px')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => '#C0CC30',
             ])
+            ->font('alati', provider: GoogleFontProvider::class)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
