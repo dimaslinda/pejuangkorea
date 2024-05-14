@@ -136,7 +136,9 @@ class CourseResource extends Resource
                             Toggle::make('published')
                                 ->label('Published')
                                 ->default('0')
-                                ->inline(),
+                                ->inline()
+                                ->onColor('success')
+                                ->offColor('warning'),
 
                         ])
                     ]);
@@ -194,7 +196,9 @@ class CourseResource extends Resource
                     ->alignCenter(),
                 ToggleColumn::make('published')
                     ->label('Published')
-                    ->alignCenter(),
+                    ->alignCenter()
+                    ->onColor('success')
+                    ->offColor('warning'),
             ])
             ->filters([
                 Filter::make('created_at')
