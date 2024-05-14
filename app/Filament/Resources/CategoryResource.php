@@ -39,11 +39,13 @@ class CategoryResource extends Resource
                         TextInput::make('name')
                             ->label('Category Name')
                             ->required()
+                            ->placeholder('Enter your category name')
                             ->live(true)
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->maxLength(255),
                         TextInput::make('slug')
                             ->label('Slug')
+                            ->placeholder('Automatically generated')
                             ->readOnly()
                             ->required()
                         ])

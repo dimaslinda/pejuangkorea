@@ -41,9 +41,11 @@ class UserResource extends Resource
                     ->schema([
                         TextInput::make('name')
                     ->label('Full Name')
+                    ->placeholder('Enter your full name')
                     ->required(),
                 TextInput::make('email')
                     ->label('Email')
+                    ->placeholder('Enter your email')
                     ->unique('users', 'email', fn (?User $record) => $record)
                     ->validationMessages([
                         'unique' => 'The email has already been taken.',
@@ -52,6 +54,7 @@ class UserResource extends Resource
                     ->required(),
                 TextInput::make('no_hp')
                     ->label('Phone Number')
+                    ->placeholder('Enter your phone number')
                     ->numeric()
                     ->tel(),
                     Select::make('role')
@@ -60,16 +63,35 @@ class UserResource extends Resource
                         'admin' => 'Admin',
                         'user' => 'User',
                     ])
+                    ->enum('role')
                     ->required(),
                 TextInput::make('password')
+                    ->placeholder('Enter your password')
                     ->label('Password')
                     ->minLength(8)
+                    ->hint('Password must be at least 8 characters')
+                    ->hintIcon('heroicon-o-information-circle')
+                    ->hintColor('warning')
+                    ->validationAttribute('password')
+                    ->validationMessages([
+                        'minLength' => 'Password must be at least 8 characters',
+                        'confirmed' => 'Password does not match',
+                    ])
                     ->revealable()
                     ->password()
+                    ->confirmed()
                     ->dehydrateStateUsing(fn ($state) => bcrypt($state))
                     ->dehydrated(fn ($state) => filled($state))
                     ->required(fn (Page $livewire): bool => $livewire instanceof CreateRecord),
-                    ])
+                TextInput::make('password_confirmation')
+                    ->placeholder('Enter your password again')
+                    ->label('Confirm Password')
+                    ->minLength(8)
+                    ->revealable()
+                    ->password()
+                    ->required()
+                    ]),
+
             ]);
     }
 
