@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Mentor extends Model implements HasMedia
+class Course extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
     protected $guarded = [];
 
-    public function course()
+    public function mentor()
     {
-        return $this->hasMany(Course::class);
+        return $this->belongsTo(Mentor::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 }
