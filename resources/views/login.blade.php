@@ -26,23 +26,34 @@
                     </div>
                 </div>
             </a>
-            <form action="" method="POST">
+            <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="mb-4">
-                    <input type="email" id="email" name="email" placeholder="Email"
+                    <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}"
                         class="block w-full px-4 py-2 mt-2 bg-white border border-gray-300 rounded-md text-secondary focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                         required>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <div class="mb-4">
                     <input type="password" id="password" name="password" placeholder="Password"
                         class="block w-full px-4 py-2 mt-2 bg-white border border-gray-300 rounded-md text-secondary focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                         required>
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+                <!-- Remember Me -->
+                <div class="block mt-4">
+                    <label for="remember_me" class="inline-flex items-center">
+                        <input id="remember_me" type="checkbox"
+                            class="border-gray-300 rounded shadow-sm text-primary focus:ring-primary" name="remember">
+                        <span class="text-sm text-gray-600 ms-2">{{ __('Remember me') }}</span>
+                    </label>
                 </div>
                 <div class="flex-col justify-center mt-10 text-center">
                     <button type="submit"
                         class="w-1/2 px-4 py-2 text-sm font-medium text-white rounded-md bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Masuk</button>
                     <div class="mt-2">
-                        Belum Punya Akun? <a href="/register" class="underline text-primary underline-offset-4">Daftar</a>
+                        Belum Punya Akun? <a href="{{ route('register') }}"
+                            class="underline text-primary underline-offset-4">Daftar</a>
                     </div>
                 </div>
             </form>

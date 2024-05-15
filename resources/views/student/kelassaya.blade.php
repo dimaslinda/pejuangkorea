@@ -20,7 +20,7 @@
                             Kelas
                         </div>
                     </a>
-                    <a href="/profil"
+                    <a href="{{ route('profile.edit') }}"
                         class="flex flex-row gap-2 px-4 py-2 font-bold group text-secondary hover:text-white hover:bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-secondary group-hover:text-white" aria-hidden="true"

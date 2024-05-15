@@ -26,27 +26,33 @@
                     </div>
                 </div>
             </a>
-            <form action="" method="POST">
+            <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="mb-4">
-                    <input type="text" id="nama" name="nama" placeholder="Nama Lengkap"
+                    <input type="text" id="nama" name="name" placeholder="Nama Lengkap"
+                        value="{{ old('name') }}"
                         class="block w-full px-4 py-2 mt-2 bg-white border border-gray-300 rounded-md text-secondary focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                         required>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <input type="email" id="email" name="email" placeholder="Email"
+                    <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}"
                         class="block w-full px-4 py-2 mt-2 bg-white border border-gray-300 rounded-md text-secondary focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                         required>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <div class="mb-4">
                     <input type="password" id="password" name="password" placeholder="Password"
                         class="block w-full px-4 py-2 mt-2 bg-white border border-gray-300 rounded-md text-secondary focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                         required>
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <input type="password" id="password" name="password" placeholder="Konfirmasi Password"
+                    <input type="password" id="password_confirmation" name="password_confirmation"
+                        placeholder="Konfirmasi Password"
                         class="block w-full px-4 py-2 mt-2 bg-white border border-gray-300 rounded-md text-secondary focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                         required>
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
                 <div class="flex-col justify-center mt-10 text-center">
                     <button type="submit"

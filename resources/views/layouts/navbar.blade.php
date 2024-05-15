@@ -5,21 +5,25 @@
         </a>
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
             @guest
-                <a href="/login"
+                <a href="{{ route('login') }}"
                     class="px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300">
                     Masuk / Daftar
                 </a>
             @endguest
             @auth
                 <button type="button"
-                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
-                    <img class="w-10 h-10 rounded-full" src="{{ asset('img/general/profil.png') }}" alt="user photo">
+                    @if (!empty(Auth()->User()->profile))
+                        <img class="w-10 h-10 rounded-full" src="{{ Auth()->user()->profile }}" alt="user photo">
+                    @else
+                        <img class="w-10 h-10 rounded-full" src="{{ asset('img/general/profil.png') }}" alt="user photo">
+                    @endif
                 </button>
                 <!-- Dropdown menu -->
-                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow"
                     id="user-dropdown">
                     <div class="px-4 py-3">
                         <span class="block text-sm text-gray-900">{{ Auth()->user()->name }}</span>
@@ -27,7 +31,7 @@
                     </div>
                     <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
-                            <a href="/dashboarduser"
+                            <a href="/dashboard"
                                 class="block px-4 py-2 text-sm text-secondary hover:bg-gray-100">Dashboard</a>
                         </li>
                         @if (auth()->user()->role === 'admin')
@@ -37,7 +41,8 @@
                             </li>
                         @endif
                         <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-secondary hover:bg-gray-100">Earnings</a>
+                            <a href="{{ route('profile.edit') }}"
+                                class="block px-4 py-2 text-sm text-secondary hover:bg-gray-100">Setting</a>
                         </li>
                         <li>
                             <a href="#" onclick="getElementById('logout').submit()"

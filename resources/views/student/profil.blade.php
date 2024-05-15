@@ -1,4 +1,9 @@
 @extends('layouts.main')
+@section('kepala')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
 @section('content')
     <section class="min-h-screen pt-32">
         <div class="container max-w-screen-xl px-4 py-8 mx-auto">
@@ -83,14 +88,20 @@
                     </div>
 
                     <div class="p-6 md:p-10">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="/editprofile/{{ $user->id }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="flex flex-col lg:flex-row">
                                 <div class="flex justify-center lg:w-1/3">
                                     <label for="dropzone-file"
                                         class="flex flex-col items-center justify-center w-40 h-40 border-2 border-dashed rounded-full cursor-pointer border-primary hover:bg-secondary hover:border-secondary">
-                                        <img src="{{ asset('img/general/profil.png') }}"
-                                            class="w-40 h-40 rounded-full brightness-50" id="showgambar" alt="profil">
+                                        @if (!empty($user->profile))
+                                            <img src="{{ $user->profile }}" class="w-40 h-40 rounded-full brightness-50"
+                                                id="showgambar" alt="profil">
+                                        @else
+                                            <img src="{{ asset('img/general/profil.png') }}"
+                                                class="w-40 h-40 rounded-full brightness-50" id="showgambar" alt="profil">
+                                        @endif
+
                                         <div class="absolute flex flex-col items-center justify-center pt-5 pb-6">
                                             <svg aria-hidden="true" class="w-10 h-10 mb-3 text-white" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24"
@@ -108,7 +119,8 @@
                                     <div class="mb-4">
                                         <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900">Nama
                                             Lengkap</label>
-                                        <input type="text" id="full-name" name="full_name"
+                                        <input type="text" id="full-name" name="name"
+                                            value="{{ old('name', $user->name) }}"
                                             class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                             placeholder="Masukan Nama Lengkap" required>
                                     </div>
@@ -116,13 +128,15 @@
                                         <label for="email"
                                             class="block mb-2 text-sm font-medium text-gray-900">Email</label>
                                         <input type="email" id="email" name="email"
+                                            value="{{ old('email', $user->email) }}"
                                             class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                             placeholder="Masukan Email" required>
                                     </div>
                                     <div class="mb-4">
                                         <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900">No.
                                             Handphone</label>
-                                        <input type="tel" id="phone-number" name="phone_number"
+                                        <input type="tel" id="no_hp" name="no_hp"
+                                            value="{{ old('no_hp', $user->no_hp) }}"
                                             class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                             placeholder="Masukan No Handphone" required>
                                     </div>
@@ -137,4 +151,31 @@
                 </div>
             </div>
     </section>
+@endsection
+@section('skrip')
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        @if (Session::has('status'))
+            toastr.success('{{ Session::get('status') }}')
+        @endif
+    </script>
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#showgambar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#dropzone-file").change(function() {
+            readURL(this);
+        });
+    </script>
 @endsection
