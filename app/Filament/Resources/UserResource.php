@@ -57,13 +57,12 @@ class UserResource extends Resource
                     ->placeholder('Enter your phone number')
                     ->numeric()
                     ->tel(),
-                    Select::make('role')
+                Select::make('role')
                     ->label('Role')
                     ->options([
-                        'admin' => 'Admin',
-                        'user' => 'User',
+                        'admin' => 'admin',
+                        'user' => 'user',
                     ])
-                    ->enum('role')
                     ->required(),
                 TextInput::make('password')
                     ->placeholder('Enter your password')
