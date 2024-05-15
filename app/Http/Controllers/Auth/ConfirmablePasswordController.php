@@ -19,6 +19,11 @@ class ConfirmablePasswordController extends Controller
         return view('auth.confirm-password');
     }
 
+    public function ubahpassword()
+    {
+        return view('student.password');
+    }
+
     /**
      * Confirm the user's password.
      */
@@ -35,6 +40,6 @@ class ConfirmablePasswordController extends Controller
 
         $request->session()->put('auth.password_confirmed_at', time());
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('dashboard', absolute: false))->with('status', 'password updated');
     }
 }

@@ -8,7 +8,7 @@
 
             <div class="flex flex-col lg:min-h-screen md:flex-row">
                 <div class="flex flex-col w-full h-full md:w-1/2 xl:w-1/3">
-                    <a href="/dashboarduser" class="flex flex-row gap-2 px-4 py-2 font-bold text-white bg-primary">
+                    <a href="/dashboard" class="flex flex-row gap-2 px-4 py-2 font-bold text-white bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="w-full md:border-l-2 md:border-[#4F4F4F] font-alata">
                     <div class="flex flex-row border-b-[1px] border-[#4F4F4F] space-x-16 px-10">
-                        <a href="/dashboarduser">
+                        <a href="/dashboard">
                             <div class="font-bold border-b-[3px] -mb-[2px] text-primary border-primary pb-3">
                                 Kelas Video
                             </div>

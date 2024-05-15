@@ -13,7 +13,7 @@
 
             <div class="flex flex-col lg:min-h-screen md:flex-row">
                 <div class="flex flex-col w-full h-full md:w-1/2 xl:w-1/3">
-                    <a href="/dashboarduser"
+                    <a href="/dashboard"
                         class="flex flex-row gap-2 px-4 py-2 font-bold group text-secondary hover:text-white hover:bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-secondary group-hover:text-white" aria-hidden="true"
@@ -74,7 +74,7 @@
                 </div>
                 <div class="w-full md:border-l-2 md:border-[#4F4F4F] font-alata">
                     <div class="flex flex-row border-b-[1px] border-[#4F4F4F] space-x-16 px-10">
-                        <a href="/profil">
+                        <a href="{{ route('profile.edit') }}">
                             <div class="font-bold border-b-[3px] -mb-[2px] text-primary border-primary pb-3">
                                 Kelola Profil
                             </div>

@@ -1,4 +1,9 @@
 @extends('layouts.main')
+@section('kepala')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
 @section('content')
     <section class="min-h-screen pt-32">
         <div class="container max-w-screen-xl px-4 py-8 mx-auto">
@@ -8,7 +13,7 @@
 
             <div class="flex flex-col lg:min-h-screen md:flex-row">
                 <div class="flex flex-col w-full h-full md:w-1/2 xl:w-1/3">
-                    <a href="/dashboarduser"
+                    <a href="/dashboard"
                         class="flex flex-row gap-2 px-4 py-2 font-bold group text-secondary hover:text-white hover:bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-secondary group-hover:text-white" aria-hidden="true"
@@ -22,7 +27,8 @@
                             Kelas
                         </div>
                     </a>
-                    <a href="/profil" class="flex flex-row gap-2 px-4 py-2 font-bold text-white group bg-primary">
+                    <a href="{{ route('profile.edit') }}"
+                        class="flex flex-row gap-2 px-4 py-2 font-bold text-white group bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -69,7 +75,7 @@
                 </div>
                 <div class="w-full md:border-l-2 md:border-[#4F4F4F] font-alata">
                     <div class="flex flex-row border-b-[1px] border-[#4F4F4F] space-x-16 px-10">
-                        <a href="/profil">
+                        <a href="{{ route('profile.edit') }}">
                             <div
                                 class="font-bold hover:border-b-[3px] -mb-[2px] hover:text-primary hover:border-primary pb-3">
                                 Kelola Profil
@@ -83,22 +89,34 @@
                     </div>
 
                     <div class="p-6 md:p-10">
-                        <form action="" method="post">
+                        <form method="post" action="{{ route('password.update') }}">
                             @csrf
+                            @method('put')
                             <div class="flex flex-col lg:w-1/2">
+
+                                <div class="mb-4">
+                                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password
+                                        Lama</label>
+                                    <input type="password" id="password" name="current_password"
+                                        class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                                        placeholder="Masukkan password lama" required>
+                                    <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
+                                </div>
                                 <div class="mb-4">
                                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password
                                         Baru</label>
                                     <input type="password" id="password" name="password"
                                         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Masukkan password baru" required>
+                                    <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
                                 </div>
                                 <div class="mb-4">
                                     <label for="confirm-password"
                                         class="block mb-2 text-sm font-medium text-gray-900">Konfirmasi Password</label>
-                                    <input type="password" id="confirm-password" name="confirm_password"
+                                    <input type="password" id="confirm-password" name="password_confirmation"
                                         class="bg-gray-50 border border-secondary text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                         placeholder="Konfirmasi password baru" required>
+                                    <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
                                 </div>
                                 <button type="submit"
                                     class="py-2 text-white uppercase transition-all transform rounded-lg lg:w-1/2 hover:bg-primary bg-secondary">
@@ -111,4 +129,31 @@
             </div>
         </div>
     </section>
+@endsection
+@section('skrip')
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        @if (Session::has('status'))
+            toastr.success('{{ Session::get('status') }}')
+        @endif
+    </script>
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#showgambar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#dropzone-file").change(function() {
+            readURL(this);
+        });
+    </script>
 @endsection
