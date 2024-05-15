@@ -44,7 +44,7 @@
                         Jangan ragu untuk hubungi kami
                     </p>
                     <div class="flex justify-center md:justify-start">
-                        <a href="#"
+                        <a href="https://wa.me/+821095204837" target="_blank"
                             class="px-5 py-3 text-base text-center text-white uppercase rounded-lg hover:bg-primary font-alata bg-secondary">
                             Hubungi Sekarang</a>
                     </div>

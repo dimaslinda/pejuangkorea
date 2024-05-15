@@ -91,6 +91,11 @@ class LessonResource extends Resource
                             ->hintIcon('heroicon-o-information-circle')
                             ->hintColor('warning')
                             ->required(),
+                    TextInput::make('duration')
+                        ->label('Duration')
+                        ->required()
+                        ->numeric()
+                        ->suffix('minutes'),
                     Toggle::make('published')
                         ->label('Published')
                         ->default('0')

@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Course;
+use App\Models\Lesson;
+use App\Models\Mentor;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $kelasvideo = Course::where('published', 1)->latest()->take(4)->get();
+        return view('index', compact('kelasvideo'));
     }
 
     public function about()
@@ -18,12 +23,18 @@ class GeneralController extends Controller
 
     public function kelas()
     {
-        return view('kelas');
+        $category = Category::all();
+        $course = Course::where('published', 1)->get();
+        return view('kelas', compact('category', 'course'));
     }
 
-    public function detailkelas()
+    public function detailkelas($slug)
     {
-        return view('detailkelas');
+        $kelasvideo = Course::where('slug', $slug)->with('publishedLessons')->firstOrFail();
+        $totallesson = Lesson::where('course_id', $kelasvideo->id)->where('published', 1)->count();
+        $lesson = Lesson::where('course_id', $kelasvideo->id)->where('published', 1)->get();
+        $mentor = Mentor::where('id', $kelasvideo->mentor_id)->first();
+        return view('detailkelas', compact('kelasvideo', 'totallesson', 'lesson', 'mentor'));
     }
 
     public function detailzoom()
@@ -36,9 +47,10 @@ class GeneralController extends Controller
         return view('student.detailcourse');
     }
 
-    public function invoice()
+    public function invoice($slug)
     {
-        return view('student.invoice');
+        $itemco = Course::where('slug', $slug)->firstOrFail();
+        return view('checkout', compact('itemco'));
     }
 
     public function login()

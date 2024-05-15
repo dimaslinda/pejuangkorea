@@ -74,7 +74,7 @@ class CourseResource extends Resource
                         TextInput::make('duration')
                             ->label('Duration')
                             ->numeric()
-                            ->minValue(1)
+                            ->suffix('minutes')
                             ->placeholder('Enter your duration in hours')
                             ->required(),
                         Select::make('category_id')
