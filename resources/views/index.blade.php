@@ -132,95 +132,42 @@
                     Kelas Zoom
                 </h2>
 
-                <div class="grid grid-cols-1 gap-4 mb-5 md:grid-cols-2 lg:grid-cols-4">
-
-                    <div
-                        class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary">
-                        <div>
-                            <img src="{{ asset('img/general/card.png') }}" alt="E-Course" class="object-cover w-full h-48">
-                        </div>
-                        <div class="flex flex-col justify-between p-5">
-                            <h3 class="text-xl font-bold text-secondary font-alata group-hover:text-white">Nama Kelas
-                                Video</h3>
-                            <p class="mt-2 text-secondary font-alata group-hover:text-white">
-                                Topik
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <div class="text-secondary font-alata group-hover:text-white">
-                                    Rp. 100.000
+                @if (!empty($zoom))
+                    <div class="grid grid-cols-1 gap-4 mb-5 md:grid-cols-2 lg:grid-cols-4">
+                        @forelse ($zoom as $item)
+                            <div
+                                class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary">
+                                <div>
+                                    <img src="{{ $item->getfirstMediaUrl('zoom') }}" alt="E-Course"
+                                        class="object-cover w-full h-48">
                                 </div>
-                                <a href="#"
-                                    class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary">
-                        <div>
-                            <img src="{{ asset('img/general/card.png') }}" alt="E-Course" class="object-cover w-full h-48">
-                        </div>
-                        <div class="flex flex-col justify-between p-5">
-                            <h3 class="text-xl font-bold text-secondary font-alata group-hover:text-white">Nama Kelas
-                                Zoom</h3>
-                            <p class="mt-2 text-secondary font-alata group-hover:text-white">
-                                Topik
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <div class="text-secondary font-alata group-hover:text-white">
-                                    Rp. 100.000
+                                <div class="flex flex-col justify-between p-5">
+                                    <h3
+                                        class="text-xl font-bold text-secondary font-alata group-hover:text-white line-clamp-2">
+                                        {{ $item->name }}
+                                    </h3>
+                                    <p class="mt-2 text-secondary font-alata group-hover:text-white">
+                                        {{ $item->category }}
+                                    </p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="text-secondary font-alata group-hover:text-white">
+                                            @currency($item->price)
+                                        </div>
+                                        <a href="/detailzoom/{{ $item->slug }}"
+                                            class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
+                                    </div>
                                 </div>
-                                <a href="#"
-                                    class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                             </div>
-                        </div>
+                        @empty
+                        @endforelse
                     </div>
-
-                    <div
-                        class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary">
-                        <div>
-                            <img src="{{ asset('img/general/card.png') }}" alt="E-Course" class="object-cover w-full h-48">
-                        </div>
-                        <div class="flex flex-col justify-between p-5">
-                            <h3 class="text-xl font-bold text-secondary font-alata group-hover:text-white">Nama Kelas
-                                Zoom</h3>
-                            <p class="mt-2 text-secondary font-alata group-hover:text-white">
-                                Topik
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <div class="text-secondary font-alata group-hover:text-white">
-                                    Rp. 100.000
-                                </div>
-                                <a href="#"
-                                    class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
-                            </div>
-                        </div>
+                @else
+                    <div class="flex justify-center mb-5 text-xl font-bold text-center uppercase font-arimo lg:text-2xl">
+                        Tidak Ada Kelas Video yang Tersedia
                     </div>
-
-                    <div
-                        class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary">
-                        <div>
-                            <img src="{{ asset('img/general/card.png') }}" alt="E-Course" class="object-cover w-full h-48">
-                        </div>
-                        <div class="flex flex-col justify-between p-5">
-                            <h3 class="text-xl font-bold text-secondary font-alata group-hover:text-white">Nama Kelas
-                                Zoom</h3>
-                            <p class="mt-2 text-secondary font-alata group-hover:text-white">
-                                Topik
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <div class="text-secondary font-alata group-hover:text-white">
-                                    Rp. 100.000
-                                </div>
-                                <a href="#"
-                                    class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                @endif
                 <div class="flex justify-center p-5">
-                    <a href="#" class="px-6 py-2 text-xl text-white uppercase bg-secondary rounded-xl font-alata">
+                    <a href="/kelaszoom" class="px-6 py-2 text-xl text-white uppercase bg-secondary rounded-xl font-alata">
                         Tampilkan semua kelas
                     </a>
                 </div>

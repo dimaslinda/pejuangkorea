@@ -8,13 +8,13 @@
                     <img src="{{ asset('img/general/poster.png') }}" class="w-48 mb-5" alt="kelas video">
                     <div class="flex flex-col font-alata">
                         <div class="text-lg text-secondary md:text-xl lg:text-2xl">
-                            Nama Kelas Video
+                            {{ $invoice->course->name }}
                         </div>
                         <div class="uppercase">
-                            Invoice: #8888888
+                            Invoice: #{{ $invoice->no_invoice }}
                         </div>
                         <div class="text-sm">
-                            01-01-2024
+                            {{ date('j F Y', strtotime($invoice->created_at)) }}
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="flex flex-row justify-between mb-10 md:mb-20">
                             <div class="flex flex-col">
-                                <div class="flex gap-2 mb-1 text-secondary">
+                                <div class="flex gap-2 px-1 py-1 mb-1 text-secondary">
                                     <svg class="w-6 h-6 text-secondary" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -36,7 +36,7 @@
                                     </svg>
                                     sms
                                 </div>
-                                <div class="flex gap-2 mb-1 text-secondary">
+                                <div class="flex gap-2 px-1 py-1 mb-1 text-secondary">
                                     <svg class="w-6 h-6 text-secondary" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -45,7 +45,7 @@
                                     </svg>
                                     telephone
                                 </div>
-                                <div class="flex gap-2 mb-1 text-secondary">
+                                <div class="flex gap-2 px-1 py-1 mb-1 text-secondary">
                                     <svg class="w-6 h-6 text-secondary" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path fill="currentColor" fill-rule="evenodd"
@@ -56,7 +56,7 @@
                                     </svg>
                                     whatsapp
                                 </div>
-                                <div class="flex gap-2 mb-1 text-secondary">
+                                <div class="flex gap-2 px-1 py-1 mb-1 text-secondary">
                                     <svg class="w-6 h-6 text-secondary" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -64,7 +64,7 @@
                                     </svg>
                                     telegram
                                 </div>
-                                <div class="flex gap-2 mb-1 text-secondary">
+                                <div class="flex gap-2 px-1 py-1 mb-1 text-secondary">
                                     <svg class="w-6 h-6 text-secondary" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
@@ -73,32 +73,40 @@
                                     email
                                 </div>
                             </div>
-                            <div class="text-secondary">
-                                <div class="mb-1 text-right md:text-left">
+                            <div class="flex flex-col text-secondary">
+                                <a href="sms:+62888777222?&body=Hello%20PejuangKorea%20Academy" target="_blank"
+                                    class="px-1 py-1 mb-1 text-right border rounded-lg md:text-left hover:text-white hover:bg-secondary border-secondary">
                                     +62888777222
-                                </div>
-                                <div class="mb-1 text-right md:text-left">
+                                </a>
+                                <a href="tel:+62888777222" target="_blank"
+                                    class="px-1 py-1 mb-1 text-right border rounded-lg md:text-left hover:text-white hover:bg-secondary border-secondary">
                                     +62888777222
-                                </div>
-                                <div class="mb-1 text-right md:text-left">
+                                </a>
+                                <a href="https://wa.me/+62888777222" target="_blank"
+                                    class="px-1 py-1 mb-1 text-right border rounded-lg md:text-left hover:text-white hover:bg-secondary border-secondary">
                                     +62888777222
-                                </div>
-                                <div class="mb-1 text-right md:text-left">
+                                </a>
+                                <a href="https://t.me/CSpejuangKorea" target="_blank"
+                                    class="px-1 py-1 mb-1 text-right border rounded-lg md:text-left hover:text-white hover:bg-secondary border-secondary">
                                     https//t.me/CSpejuangKorea
-                                </div>
-                                <div class="mb-1 text-right md:text-left">
+                                </a>
+                                <a href="mailto:pejuangkoreaacademy@gmail" target="_blank"
+                                    class="px-1 py-1 mb-1 text-right border rounded-lg md:text-left hover:text-white hover:bg-secondary border-secondary">
                                     pejuangkoreaacademy@gmail.com
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="mb-10 md:mb-0">
-                            <form action="">
+                            <form action="/updateinvoice/{{ $invoice->no_invoice }}" method="post"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <label class="block mb-2 text-secondary" for="file_input">
                                     Bukti Transfer
                                 </label>
                                 <input
                                     class="block w-full mb-2 text-sm border border-gray-300 rounded-lg cursor-pointer text-secondary bg-gray-50 focus:outline-none"
-                                    aria-describedby="file_input_help" id="file_input" type="file">
+                                    aria-describedby="file_input_help" id="file_input" name="bukti" required
+                                    type="file">
                                 <p class="mt-1 mb-5 text-sm text-secondary" id="file_input_help">SVG, PNG, JPG
                                     or GIF</p>
                                 <button type="submit"
@@ -122,10 +130,10 @@
                         </div>
                         <div class="flex justify-between py-2 bg-[#E8E8E8]">
                             <div>
-                                Nama Kelas Video
+                                {{ $invoice->course->name }}
                             </div>
                             <div>
-                                Rp100.000
+                                @currency($invoice->price)
                             </div>
                         </div>
                         <div class="flex justify-between py-2">
@@ -141,7 +149,7 @@
                                 Total Transfer
                             </div>
                             <div>
-                                Rp100.000
+                                @currency($invoice->price)
                             </div>
                         </div>
                     </div>

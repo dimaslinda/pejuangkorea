@@ -8,7 +8,7 @@
 
             <div class="flex flex-col lg:min-h-screen md:flex-row">
                 <div class="flex flex-col w-full h-full md:w-1/2 xl:w-1/3">
-                    <a href="/dashboarduser"
+                    <a href="/dashboard"
                         class="flex flex-row gap-2 px-4 py-2 font-bold group text-secondary hover:text-white hover:bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-secondary group-hover:text-white" aria-hidden="true"
@@ -22,7 +22,7 @@
                             Kelas
                         </div>
                     </a>
-                    <a href="/profil"
+                    <a href="{{ route('profile.edit') }}"
                         class="flex flex-row gap-2 px-4 py-2 font-bold text-secondary hover:text-white group hover:bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-secondary group-hover:text-white" aria-hidden="true"
@@ -84,94 +84,72 @@
                     </div>
 
                     <div class="p-6 md:p-10">
-                        {{-- <div class="flex flex-col items-center justify-center gap-4">
-                            <div>
-                                <img src="{{ asset('img/general/empty-video.png') }}" alt="empty video">
-                            </div>
-                            <div class="font-semibold text-center capitalize lg:text-xl text-secondary">
-                                Belum ada riwayat Pembayaran. Cari kelas yang <br> kamu minati sekarang!
-                            </div>
-                            <div class="flex justify-center md:justify-start">
-                                <a href="#"
-                                    class="px-5 py-3 text-base text-center text-white uppercase rounded-lg hover:bg-primary font-alata bg-secondary">
-                                    Mulai Sekarang!</a>
-                            </div>
-                        </div> --}}
 
-                        <div
-                            class="flex flex-col mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow-2xl lg:flex-row">
-                            <div class="w-full lg:w-1/3 lg:max-h-52">
-                                <img src="{{ asset('img/general/poster.png') }}" alt="Sample Image"
-                                    class="object-cover w-full h-full rounded-l-lg">
-                            </div>
-                            <div class="flex flex-col p-5 lg:w-1/2">
-                                <h3
-                                    class="text-xl lg:text-2xl text-secondary font-alata group-hover:text-white line-clamp-2">
-                                    Nama Kelas Video
-                                </h3>
-                                <div>
-                                    Invoice: #8888888
+
+                        @forelse ($invoice as $item)
+                            <div
+                                class="flex flex-col mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow-2xl lg:flex-row">
+                                <div class="w-full lg:w-1/3 lg:max-h-52">
+                                    <img src="{{ asset('img/general/poster.png') }}" alt="Sample Image"
+                                        class="object-cover w-full h-full rounded-l-lg">
                                 </div>
-                                <div class="flex gap-2 mt-1">
-                                    <svg class="w-6 h-6 text-secondary" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                        viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
-                                    </svg>
-                                    01 Januari 2024
-                                </div>
-                                <div class="flex flex-col items-center justify-between gap-2 mt-5 text-center lg:flex-row">
+                                <div class="flex flex-col p-5 lg:w-1/2">
+                                    <h3
+                                        class="text-xl lg:text-2xl text-secondary font-alata group-hover:text-white line-clamp-2">
+                                        {{ $item->course->name }}
+                                    </h3>
                                     <div>
-                                        Status : <span class="font-bold text-primary">Menunggu Konfirmasi</span>
+                                        Invoice: #{{ $item->no_invoice }}
                                     </div>
-                                    <a href="#"
-                                        class="px-5 py-2 text-center text-white uppercase transition-all transform rounded-full lg:w-1/3 bg-primary hover:bg-secondary">
+                                    <div class="flex gap-2 mt-1">
+                                        <svg class="w-6 h-6 text-secondary" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                            viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                                        </svg>
+                                        {{ date('d M Y', strtotime($item->created_at)) }}
+                                    </div>
+                                    <div
+                                        class="flex flex-col items-center justify-between gap-2 mt-5 text-center lg:flex-row">
                                         <div>
-                                            Detail
+                                            Status :
+                                            @if ($item->status == 'pending')
+                                                <span class="font-bold text-primary">
+                                                    Menunggu Konfirmasi
+                                                </span>
+                                            @else
+                                                <span class="font-bold text-red-600">
+                                                    Pesanan gagal
+                                                </span>
+                                            @endif
+
                                         </div>
-                                    </a>
+                                        <a href="/konfirmasipembayaran/{{ $item->no_invoice }}"
+                                            class="px-5 py-2 text-center text-white uppercase transition-all transform rounded-full lg:w-1/3 bg-primary hover:bg-secondary">
+                                            <div>
+                                                Detail
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div
-                            class="flex flex-col mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow-2xl lg:flex-row">
-                            <div class="w-full lg:w-1/3 lg:max-h-52">
-                                <img src="{{ asset('img/general/poster.png') }}" alt="Sample Image"
-                                    class="object-cover w-full h-full rounded-l-lg">
-                            </div>
-                            <div class="flex flex-col p-5 lg:w-1/2">
-                                <h3
-                                    class="text-xl lg:text-2xl text-secondary font-alata group-hover:text-white line-clamp-2">
-                                    Nama Kelas Video
-                                </h3>
+                        @empty
+                            <div class="flex flex-col items-center justify-center gap-4">
                                 <div>
-                                    Invoice: #8888888
+                                    <img src="{{ asset('img/general/empty-video.png') }}" alt="empty video">
                                 </div>
-                                <div class="flex gap-2 mt-1">
-                                    <svg class="w-6 h-6 text-secondary" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                        viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
-                                    </svg>
-                                    01 Januari 2024
+                                <div class="font-semibold text-center capitalize lg:text-xl text-secondary">
+                                    Belum ada riwayat Pembayaran. Cari kelas yang <br> kamu minati sekarang!
                                 </div>
-                                <div class="flex flex-col items-center justify-between gap-2 mt-5 text-center lg:flex-row">
-                                    <div>
-                                        Status : <span class="font-bold text-primary">Menunggu Konfirmasi</span>
-                                    </div>
-                                    <a href="#"
-                                        class="px-5 py-2 text-center text-white uppercase transition-all transform rounded-full lg:w-1/3 bg-primary hover:bg-secondary">
-                                        <div>
-                                            Detail
-                                        </div>
-                                    </a>
+                                <div class="flex justify-center md:justify-start">
+                                    <a href="/kelas"
+                                        class="px-5 py-3 text-base text-center text-white uppercase rounded-lg hover:bg-primary font-alata bg-secondary">
+                                        Mulai Sekarang!</a>
                                 </div>
                             </div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

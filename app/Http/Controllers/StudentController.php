@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -28,11 +29,19 @@ class StudentController extends Controller
 
     public function pesanan()
     {
-        return view('student.pesanan');
+        $invoice = Invoice::where('user_id', Auth()->user()->id)->where('status', 'paid')->get();
+        return view('student.pesanan', compact('invoice'));
     }
 
     public function dalamproses()
     {
-        return view('student.dalamproses');
+        $invoice = Invoice::where('user_id', Auth()->user()->id)->where('status', 'pending')->get();
+        return view('student.dalamproses', compact('invoice'));
+    }
+
+    public function detailpesanan($no_invoice)
+    {
+        $invoice = Invoice::where('no_invoice', $no_invoice)->first();
+        return view('student.detailpesanan', compact('invoice'));
     }
 }

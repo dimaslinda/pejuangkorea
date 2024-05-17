@@ -15,7 +15,8 @@ class GeneralController extends Controller
     public function index()
     {
         $kelasvideo = Course::where('published', 1)->latest()->take(4)->get();
-        return view('index', compact('kelasvideo'));
+        $zoom = Zoom::orderBy('id', 'desc')->latest()->take(4)->get();
+        return view('index', compact('kelasvideo', 'zoom'));
     }
 
     public function about()
