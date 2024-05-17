@@ -3,7 +3,7 @@
     <section class="min-h-screen pt-32">
         <div class="container max-w-screen-xl px-4 py-8 mx-auto">
             <div class="mb-10 text-2xl font-bold text-center md:text-3xl lg:text-4xl md:text-left font-arimo">
-                안녕하세요, Bambang!
+                안녕하세요, {{ Auth()->user()->name }}!
             </div>
 
             <div class="flex flex-col lg:min-h-screen md:flex-row">

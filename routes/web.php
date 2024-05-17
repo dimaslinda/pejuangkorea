@@ -6,9 +6,14 @@ use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GeneralController::class, 'index']);
+Route::get('/kelas', [GeneralController::class, 'kelas']);
+Route::get('/kelaszoom', [GeneralController::class, 'zoom']);
+Route::get('/detailkelas/{slug}', [GeneralController::class, 'detailkelas']);
+Route::get('/detailzoom/{slug}', [GeneralController::class, 'detailzoom']);
 
 
 Route::get('/dashboard', [StudentController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/about', [GeneralController::class, 'about']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

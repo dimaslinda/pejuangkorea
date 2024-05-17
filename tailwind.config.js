@@ -7,6 +7,9 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
         "./node_modules/flowbite/**/*.js"
     ],
 
@@ -20,7 +23,7 @@ export default {
             colors: {
                 'primary' : '#C0CC30',
                 'secondary' : '#1D1D1B',
-                'tertiary' : '#F9F9F9',
+                'tertiary' : '#BDBDBD',
             },
         },
     },

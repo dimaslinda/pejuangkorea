@@ -55,7 +55,7 @@ class CourseResource extends Resource
                         TextInput::make('name')
                             ->label('Course Name')
                             ->required()
-                            ->live()
+                            ->live('bounce')
                             ->placeholder('Enter your course name')
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->maxLength(255),
@@ -74,7 +74,7 @@ class CourseResource extends Resource
                         TextInput::make('duration')
                             ->label('Duration')
                             ->numeric()
-                            ->suffix('minutes')
+                            ->suffix('Hours')
                             ->placeholder('Enter your duration in hours')
                             ->required(),
                         Select::make('category_id')

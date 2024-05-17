@@ -155,7 +155,7 @@
             </div>
 
             <div class="flex flex-wrap justify-center gap-5">
-                <div class="py-20 swiper mySwiper">
+                <div class="flex py-20 swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="w-full max-w-xs p-4 bg-white border-2 shadow-2xl rounded-xl">

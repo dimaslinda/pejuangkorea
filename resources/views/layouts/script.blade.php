@@ -8,6 +8,9 @@
         centeredSlides: true,
         loop: true,
         spaceBetween: 10,
+        autoplay: {
+            delay: 2000,
+        },
         pagination: {
             el: ".paginat",
             clickable: true,

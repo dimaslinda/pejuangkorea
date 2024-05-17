@@ -5,32 +5,28 @@
         {{-- kelas video --}}
         <div class="container max-w-screen-xl px-4 py-8 mx-auto">
             <div id="myBtnContainer" class="flex flex-wrap justify-center gap-4 mb-8 md:justify-start md:flex-row font-alata">
-                <button
-                    class="px-6 py-2 border-2 rounded-full cursor-pointer btn active text-tertiary hover:text-white hover:bg-primary border-tertiary hover:border-primary font-alata"
+                <a href="/kelas"
+                    class="px-6 py-2 border-2 rounded-full cursor-pointer btn text-tertiary hover:text-white hover:bg-primary border-tertiary hover:border-primary font-alata"
                     onclick="filterSelection('all')">
                     Semua Kelas
-                </button>
-                @forelse ($category as $item)
-                    <button
-                        class="px-6 py-2 border-2 rounded-full cursor-pointer btn text-tertiary hover:text-white hover:bg-primary border-tertiary hover:border-primary font-alata"
-                        onclick="filterSelection('{{ $item->name }}')">
-                        Kelas {{ $item->name }}
-                    </button>
-                @empty
-                @endforelse
-                <a href="/kelaszoom"
+                </a>
+                <a href="/kelas"
                     class="px-6 py-2 border-2 rounded-full cursor-pointer btn text-tertiary hover:text-white hover:bg-primary border-tertiary hover:border-primary font-alata">
+                    Semua Kelas
+                </a>
+                <a href="/kelaszoom"
+                    class="px-6 py-2 border-2 rounded-full cursor-pointer btn active text-tertiary hover:text-white hover:bg-primary border-tertiary hover:border-primary font-alata">
                     Kelas Zoom
                 </a>
             </div>
 
             <div class="grid grid-cols-1 gap-4 mb-5 md:grid-cols-2 lg:grid-cols-4">
 
-                @forelse ($course as $item)
+                @forelse ($zoom as $item)
                     <div
-                        class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary kolom {{ $item->category->name }}">
+                        class="flex flex-col overflow-hidden bg-white border shadow-2xl cursor-pointer drop-shadow-2xl rounded-xl group hover:bg-primary kolom {{ $item->category }}">
                         <div>
-                            <img src="{{ $item->getfirstMediaUrl('thumbnail_course') }}" alt="E-Course"
+                            <img src="{{ $item->getfirstMediaUrl('zoom') }}" alt="E-Course"
                                 class="object-cover w-full h-48">
                         </div>
                         <div class="flex flex-col justify-between p-5">
@@ -38,13 +34,13 @@
                                 {{ $item->name }}
                             </h3>
                             <p class="mt-2 text-secondary font-alata group-hover:text-white">
-                                {{ $item->category->name }}
+                                {{ $item->category }}
                             </p>
                             <div class="flex items-center justify-between">
                                 <div class="text-secondary font-alata group-hover:text-white">
                                     @currency($item->price)
                                 </div>
-                                <a href="/detailkelas/{{ $item->slug }}"
+                                <a href="/detailzoom/{{ $item->slug }}"
                                     class="items-center px-6 py-2 text-sm uppercase bg-white border-2 rounded-full border-primary text-primary font-alata">Tertarik</a>
                             </div>
                         </div>

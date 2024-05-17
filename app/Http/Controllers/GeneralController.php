@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Materizoom;
 use App\Models\Mentor;
+use App\Models\Zoom;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
@@ -28,6 +30,12 @@ class GeneralController extends Controller
         return view('kelas', compact('category', 'course'));
     }
 
+    public function zoom()
+    {
+        $zoom = Zoom::all();
+        return view('zoom', compact('zoom'));
+    }
+
     public function detailkelas($slug)
     {
         $kelasvideo = Course::where('slug', $slug)->with('publishedLessons')->firstOrFail();
@@ -37,9 +45,13 @@ class GeneralController extends Controller
         return view('detailkelas', compact('kelasvideo', 'totallesson', 'lesson', 'mentor'));
     }
 
-    public function detailzoom()
+    public function detailzoom($slug)
     {
-        return view('detailzoom');
+        $zoom = Zoom::where('slug', $slug)->firstOrFail();
+        $totalzoom = Materizoom::where('zoom_id', $zoom->id)->count();
+        $materizoom = Materizoom::where('zoom_id', $zoom->id)->get();
+        $mentor = Mentor::where('id', $zoom->mentor_id)->first();
+        return view('detailzoom', compact('zoom', 'totalzoom', 'materizoom', 'mentor'));
     }
 
     public function detailcourse()
