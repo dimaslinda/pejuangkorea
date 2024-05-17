@@ -25,11 +25,16 @@ class Course extends Model implements HasMedia
 
     public function students()
     {
-        return $this->belongsToMany(User::class, 'course_student')->withTimestamps()->withPivot(['rating', 'komentar']);
+        return $this->belongsToMany(User::class, 'course_student');
     }
 
     public function publishedLessons()
     {
         return $this->hasMany(Lesson::class)->orderBy('position')->where('published', 1);
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class)->orderBy('position');
     }
 }

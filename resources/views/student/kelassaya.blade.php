@@ -74,7 +74,7 @@
                                 Kelas Video
                             </div>
                         </a>
-                        <a href="/kelaszoom">
+                        <a href="/dashboardzoom">
                             <div
                                 class="font-bold hover:border-b-[3px] -mb-[2px] hover:text-primary hover:border-primary pb-3">
                                 Kelas Zoom
@@ -83,66 +83,48 @@
                     </div>
 
                     <div class="p-10">
-                        {{-- <div class="flex flex-col items-center justify-center gap-4">
-                            <div>
-                                <img src="{{ asset('img/general/empty-video.png') }}" alt="empty video">
-                            </div>
-                            <div class="font-semibold text-center lg:text-xl text-secondary">
-                                Belum ada kelas yang kamu ikuti. Cari kelas yang <br> kamu minati sekarang!
-                            </div>
-                            <div class="flex justify-center md:justify-start">
-                                <a href="#"
-                                    class="px-5 py-3 text-base text-center text-white uppercase rounded-lg hover:bg-primary font-alata bg-secondary">
-                                    Mulai Sekarang!</a>
-                            </div>
-                        </div> --}}
 
-                        <div
-                            class="flex flex-col mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow-2xl md:flex-row">
-                            <div class="w-full md:w-1/3 max-h-52">
-                                <img src="{{ asset('img/general/poster.png') }}" alt="Sample Image"
-                                    class="object-cover w-full h-full rounded-l-lg">
+
+                        @forelse ($purchased_courses as $item)
+                            <div
+                                class="flex flex-col mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow-2xl md:flex-row">
+                                <div class="w-full md:w-1/3 max-h-52">
+                                    <img src="{{ $item->getfirstMediaUrl('thumbnail_course') }}" alt="Sample Image"
+                                        class="object-cover w-full h-full rounded-l-lg">
+                                </div>
+                                <div class="flex flex-col p-5 md:w-1/2">
+                                    <h3
+                                        class="text-xl lg:text-2xl text-secondary font-alata line-clamp-2 group-hover:text-white">
+                                        {{ $item->name }}
+                                    </h3>
+                                    <div>
+                                        {{ $item->category->name }}
+                                    </div>
+                                    <div class="flex mt-5 text-center">
+                                        <a href="/pembelajaran/{{ $item->slug }}"
+                                            class="px-5 py-2 text-center text-white rounded-full bg-primary">
+                                            <div>
+                                                Lihat Materi
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex flex-col p-5 md:w-1/2">
-                                <h3
-                                    class="text-xl lg:text-2xl text-secondary font-alata line-clamp-2 group-hover:text-white">
-                                    Nama Kelas Video
-                                </h3>
+                        @empty
+                            <div class="flex flex-col items-center justify-center gap-4">
                                 <div>
-                                    Topik
+                                    <img src="{{ asset('img/general/empty-video.png') }}" alt="empty video">
                                 </div>
-                                <div class="flex mt-5 text-center">
-                                    <a href="#" class="px-5 py-2 text-center text-white rounded-full bg-primary">
-                                        <div>
-                                            Lihat Materi
-                                        </div>
-                                    </a>
+                                <div class="font-semibold text-center lg:text-xl text-secondary">
+                                    Belum ada kelas yang kamu ikuti. Cari kelas yang <br> kamu minati sekarang!
                                 </div>
-                            </div>
-                        </div>
-                        <div
-                            class="flex flex-col mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow-2xl md:flex-row">
-                            <div class="w-full md:w-1/3 max-h-52">
-                                <img src="{{ asset('img/general/poster.png') }}" alt="Sample Image"
-                                    class="object-cover w-full h-full rounded-l-lg">
-                            </div>
-                            <div class="flex flex-col p-5 md:w-1/2">
-                                <h3
-                                    class="text-xl lg:text-2xl text-secondary font-alata line-clamp-2 group-hover:text-white">
-                                    Nama Kelas Video
-                                </h3>
-                                <div>
-                                    Topik
-                                </div>
-                                <div class="flex mt-5 text-center">
-                                    <a href="#" class="px-5 py-2 text-center text-white rounded-full bg-primary">
-                                        <div>
-                                            Lihat Materi
-                                        </div>
-                                    </a>
+                                <div class="flex justify-center md:justify-start">
+                                    <a href="#"
+                                        class="px-5 py-3 text-base text-center text-white uppercase rounded-lg hover:bg-primary font-alata bg-secondary">
+                                        Mulai Sekarang!</a>
                                 </div>
                             </div>
-                        </div>
+                        @endforelse
 
                     </div>
                 </div>

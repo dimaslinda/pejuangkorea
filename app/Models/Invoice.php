@@ -11,13 +11,13 @@ class Invoice extends Model
 
     protected $guarded = [];
 
-    public function students()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

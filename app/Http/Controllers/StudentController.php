@@ -2,17 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Invoice;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
     public function index()
     {
-        return view('student.kelassaya');
+        $purchased_courses = [];
+        if(auth()->check()) {
+            $purchased_courses = Course::whereHas('students', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })
+            ->with('lessons')
+            ->orderBy('id', 'desc')
+            ->get();
+        }
+
+        $courses = Course::where('published', 1)->latest()->get();
+        return view('student.kelassaya', compact('purchased_courses', 'courses'));
     }
 
-    public function kelaszoom()
+    public function pembelajaran($slug)
+    {
+        $course = Course::where('slug', $slug)->firstOrFail();
+        $lesson = Lesson::where('course_id', $course->id)->where('published', 1)->get();
+
+        $purchased_course = DB::table('course_student')->where('user_id', Auth()->user()->id)->where('course_id', $course->id)->count() > 0;
+        if(!$purchased_course)
+        {
+            return redirect()->route('student.kelassaya');
+        }
+        return view('student.detailcourse', compact('course', 'purchased_course'));
+    }
+
+    public function dashboardzoom()
     {
         return view('student.kelaszoom');
     }

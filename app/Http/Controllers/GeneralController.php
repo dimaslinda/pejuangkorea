@@ -55,11 +55,6 @@ class GeneralController extends Controller
         return view('detailzoom', compact('zoom', 'totalzoom', 'materizoom', 'mentor'));
     }
 
-    public function detailcourse()
-    {
-        return view('student.detailcourse');
-    }
-
     public function invoice($slug)
     {
         $itemco = Course::where('slug', $slug)->firstOrFail();
