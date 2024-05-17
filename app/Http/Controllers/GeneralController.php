@@ -43,7 +43,10 @@ class GeneralController extends Controller
         $totallesson = Lesson::where('course_id', $kelasvideo->id)->where('published', 1)->count();
         $lesson = Lesson::where('course_id', $kelasvideo->id)->where('published', 1)->get();
         $mentor = Mentor::where('id', $kelasvideo->mentor_id)->first();
-        return view('detailkelas', compact('kelasvideo', 'totallesson', 'lesson', 'mentor'));
+
+        $purchased_course = auth()->check() && $kelasvideo->students()->where('user_id', auth()->id())->count() > 0;
+
+        return view('detailkelas', compact('kelasvideo', 'totallesson', 'lesson', 'mentor', 'purchased_course'));
     }
 
     public function detailzoom($slug)

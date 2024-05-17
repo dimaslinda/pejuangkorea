@@ -25,7 +25,7 @@ Route::get('/about', [GeneralController::class, 'about']);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/dashboardzoom', [StudentController::class, 'dashboardzoom']);
-    Route::get('/pembelajaran/{slug}', [StudentController::class, 'pembelajaran']);
+    Route::get('/pembelajaran/{course_id}/{slug}', [StudentController::class, 'pembelajaran'])->name('pembelajaran');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/editprofile/{id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

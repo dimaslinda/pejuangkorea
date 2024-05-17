@@ -26,28 +26,57 @@
                         </div>
                     </div>
                     <div class="overflow-y-auto max-h-80">
-                        @forelse ($lesson as $item)
-                            <div class="flex justify-between mb-5">
-                                <div class="flex items-center space-x-4">
-                                    <video poster="{{ $kelasvideo->getfirstMediaUrl('thumbnail_course') }}" class="w-32">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <div class="">
-                                        {{ $item->name }}
+                        @forelse ($kelasvideo->lessons->take(5) as $item)
+                            @if (!$purchased_course)
+                                <div class="flex justify-between mb-5">
+                                    <div class="flex items-center space-x-4">
+                                        <video poster="{{ $kelasvideo->getfirstMediaUrl('thumbnail_course') }}"
+                                            class="w-32">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <div class="">
+                                            {{ $item->name }}
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        @php
+                                            $value = $item->duration * 60;
+
+                                            $hours = floor($value / 3600);
+                                            $minutes = floor(($value - $hours * 3600) / 60);
+                                            $seconds = $value - $hours * 3600 - $minutes * 60;
+                                            $duration = sprintf('%02d:%02d', $minutes, $seconds);
+                                        @endphp
+                                        {{ $duration }}
                                     </div>
                                 </div>
-                                <div class="flex items-center">
-                                    @php
-                                        $value = $item->duration * 60;
+                            @else
+                                <a href="{{ route('pembelajaran', [$item->course_id, $item->slug]) }}"
+                                    class="cursor-pointer">
+                                    <div class="flex justify-between mb-5">
+                                        <div class="flex items-center space-x-4">
+                                            <video poster="{{ $kelasvideo->getfirstMediaUrl('thumbnail_course') }}"
+                                                class="w-32">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            <div class="">
+                                                {{ $item->name }}
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            @php
+                                                $value = $item->duration * 60;
 
-                                        $hours = floor($value / 3600);
-                                        $minutes = floor(($value - $hours * 3600) / 60);
-                                        $seconds = $value - $hours * 3600 - $minutes * 60;
-                                        $duration = sprintf('%02d:%02d', $minutes, $seconds);
-                                    @endphp
-                                    {{ $duration }}
-                                </div>
-                            </div>
+                                                $hours = floor($value / 3600);
+                                                $minutes = floor(($value - $hours * 3600) / 60);
+                                                $seconds = $value - $hours * 3600 - $minutes * 60;
+                                                $duration = sprintf('%02d:%02d', $minutes, $seconds);
+                                            @endphp
+                                            {{ $duration }}
+                                        </div>
+                                    </div>
+                                </a>
+                            @endif
                         @empty
                         @endforelse
                     </div>
@@ -67,15 +96,20 @@
                 </div>
                 <div class="flex-1 mt-5 md:mt-0">
                     <div class="flex flex-col items-center justify-between gap-2 md:gap-0 md:flex-row">
-                        <div class="text-2xl text-primary lg:text-3xl">
-                            @currency($kelasvideo->price)
-                        </div>
-                        @if (Auth::check())
-                            <div class="flex justify-center md:justify-start">
-                                <a href="/invoice/{{ $kelasvideo->slug }}"
-                                    class="px-5 py-3 text-base font-bold text-center text-white uppercase transition-all rounded-lg transofrm hover:bg-primary font-alata bg-secondary">
-                                    Beli Sekarang!</a>
+                        @if (!$purchased_course)
+                            <div class="text-2xl text-primary lg:text-3xl">
+                                @currency($kelasvideo->price)
                             </div>
+                        @else
+                        @endif
+                        @if (Auth::check())
+                            @if ($kelasvideo->students()->where('user_id', auth()->id())->count() == 0)
+                                <div class="flex justify-center md:justify-start">
+                                    <a href="/invoice/{{ $kelasvideo->slug }}"
+                                        class="px-5 py-3 text-base font-bold text-center text-white uppercase transition-all rounded-lg transofrm hover:bg-primary font-alata bg-secondary">
+                                        Beli Sekarang!</a>
+                                </div>
+                            @endif
                         @else
                             <div class="flex justify-center md:justify-start">
                                 <a href="{{ route('register') }}"
@@ -84,53 +118,56 @@
                             </div>
                         @endif
                     </div>
-                    <div class="flex justify-between mt-8 md:w-3/4">
-                        <div class="flex-1">
-                            <div class="flex gap-2 mb-2">
-                                <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-5-4v4h4V3h-4Z" />
-                                </svg>
-                                kategori
+                    @if (!$purchased_course)
+                        <div class="flex justify-between mt-8 md:w-3/4">
+                            <div class="flex-1">
+                                <div class="flex gap-2 mb-2">
+                                    <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-5-4v4h4V3h-4Z" />
+                                    </svg>
+                                    kategori
+                                </div>
+                                <div class="flex gap-2 mb-2">
+                                    <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15.583 8.445h.01M10.86 19.71l-6.573-6.63a.993.993 0 0 1 0-1.4l7.329-7.394A.98.98 0 0 1 12.31 4l5.734.007A1.968 1.968 0 0 1 20 5.983v5.5a.992.992 0 0 1-.316.727l-7.44 7.5a.974.974 0 0 1-1.384.001Z" />
+                                    </svg>
+                                    level
+                                </div>
+                                <div class="flex gap-2 mb-2">
+                                    <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    durasi
+                                </div>
                             </div>
-                            <div class="flex gap-2 mb-2">
-                                <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M15.583 8.445h.01M10.86 19.71l-6.573-6.63a.993.993 0 0 1 0-1.4l7.329-7.394A.98.98 0 0 1 12.31 4l5.734.007A1.968 1.968 0 0 1 20 5.983v5.5a.992.992 0 0 1-.316.727l-7.44 7.5a.974.974 0 0 1-1.384.001Z" />
-                                </svg>
-                                level
-                            </div>
-                            <div class="flex gap-2 mb-2">
-                                <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
-                                durasi
-                            </div>
-                        </div>
-                        <div class="flex-2">
-                            <div class="mb-2">
-                                {{ $kelasvideo->category->name }}
-                            </div>
-                            <div class="mb-2">
-                                {{ $kelasvideo->level }}
-                            </div>
-                            <div class="mb-2">
-                                @php
-                                    $value = $kelasvideo->duration * 3600;
+                            <div class="flex-2">
+                                <div class="mb-2">
+                                    {{ $kelasvideo->category->name }}
+                                </div>
+                                <div class="mb-2">
+                                    {{ $kelasvideo->level }}
+                                </div>
+                                <div class="mb-2">
+                                    @php
+                                        $value = $kelasvideo->duration * 3600;
 
-                                    $hours = floor($value / 3600);
-                                    $duration = sprintf('%2d', $hours);
-                                @endphp
-                                {{ $duration }} jam
+                                        $hours = floor($value / 3600);
+                                        $duration = sprintf('%2d', $hours);
+                                    @endphp
+                                    {{ $duration }} jam
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @else
+                    @endif
                 </div>
             </div>
         </div>

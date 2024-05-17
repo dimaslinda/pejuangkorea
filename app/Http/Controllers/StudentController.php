@@ -26,17 +26,21 @@ class StudentController extends Controller
         return view('student.kelassaya', compact('purchased_courses', 'courses'));
     }
 
-    public function pembelajaran($slug)
+    public function pembelajaran($course_id, $slug)
     {
-        $course = Course::where('slug', $slug)->firstOrFail();
-        $lesson = Lesson::where('course_id', $course->id)->where('published', 1)->get();
+        $lesson = Lesson::where('slug', $slug)->where('course_id', $course_id)->firstOrFail();
+        if(auth()->check()) {
+            if($lesson->students()->where('user_id', auth()->user()->id)->count() > 0) {
+                $lesson->students()->detach(auth()->user()->id);
+            }
+        }
 
-        $purchased_course = DB::table('course_student')->where('user_id', Auth()->user()->id)->where('course_id', $course->id)->count() > 0;
-        if(!$purchased_course)
-        {
+        $purchased_course = $lesson->course->students()->where('user_id', auth()->user()->id)->count() > 0;
+        if(!$purchased_course) {
             return redirect()->route('student.kelassaya');
         }
-        return view('student.detailcourse', compact('course', 'purchased_course'));
+
+        return view('student.detailcourse', compact('purchased_course', 'lesson'));
     }
 
     public function dashboardzoom()
