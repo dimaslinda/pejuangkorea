@@ -10,7 +10,9 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SelectColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -58,6 +60,14 @@ class InvoiceResource extends Resource
                     ->alignCenter()
                     ->searchable()
                     ->sortable(),
+                ImageColumn::make('bukti')
+                    ->label('Bukti Transfer')
+                    ->alignCenter()
+                    ->width(100)
+                    ->height(100)
+                    ->url(function ($record) {
+                        return $record->bukti;
+                    }),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->alignCenter()
@@ -97,7 +107,6 @@ class InvoiceResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
