@@ -52,7 +52,7 @@
                             Pesanan
                         </div>
                     </a>
-                    <a href="#"
+                    <a href="#" onclick="getElementById('logout').submit()"
                         class="flex flex-row gap-2 px-4 py-2 mt-5 mb-20 font-bold md:mb-0 group text-secondary hover:text-white hover:bg-primary">
                         <div>
                             <svg class="w-6 h-6 text-secondary group-hover:text-white" aria-hidden="true"
@@ -66,6 +66,9 @@
                         <div>
                             Logout
                         </div>
+                        <form id="logout" action="/logout" method="post">
+                            @csrf
+                        </form>
                     </a>
                 </div>
                 <div class="w-full md:border-l-2 md:border-[#4F4F4F] font-alata">

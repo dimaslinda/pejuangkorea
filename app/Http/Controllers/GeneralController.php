@@ -66,13 +66,10 @@ class GeneralController extends Controller
         return view('checkout', compact('itemco'));
     }
 
-    public function login()
+    public function landingpage()
     {
-        return view('login');
-    }
-
-    public function register()
-    {
-        return view('register');
+        $kelasvideo = Course::where('published', 1)->latest()->take(2)->get();
+        $zoom = Zoom::orderBy('id', 'desc')->latest()->take(2)->get();
+        return view('landingpage', compact('kelasvideo', 'zoom'));
     }
 }

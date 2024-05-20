@@ -3,7 +3,7 @@
 @section('content')
     <section class="flex items-center justify-center min-h-screen p-6 bg-gray-100 font-alata">
         <div class="w-full p-10 space-y-6 bg-white border-2 rounded-lg shadow-2xl md:p-20 md:max-w-xl drop-shadow-2xl">
-            <a href="#">
+            <a href="{{ url('/auth/google') }}">
                 <div class="flex items-center justify-center gap-4 px-4 py-2 border border-gray-300 rounded-md">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" x="0px" y="0px" viewBox="0 0 48 48">

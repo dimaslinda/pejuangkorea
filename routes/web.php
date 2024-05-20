@@ -19,6 +19,7 @@ Route::get('/konfirmasipembayaran/{no_invoice}', [InvoiceController::class, 'kon
 Route::post('/updateinvoice/{no_invoice}', [InvoiceController::class, 'updateinvoice'])->name('updateinvoice');
 Route::get('auth/{provider}', [SocialiteController::class, 'redirectToProvider']);
 Route::get('auth/{provider}/callback', [SocialiteController::class, 'handleProviderCallback']);
+Route::get('/landingpage', [GeneralController::class, 'landingpage']);
 
 
 

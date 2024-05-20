@@ -124,6 +124,13 @@ class LessonResource extends Resource
                     ->label('Position')
                     ->searchable()
                     ->alignCenter(),
+                TextColumn::make('description')
+                    ->label('Description')
+                    ->searchable()
+                    ->wrap()
+                    ->html()
+                    ->limit(20)
+                    ->alignCenter(),
                 TextColumn::make('created_at')
                     ->label('Created')
                     ->alignCenter()
