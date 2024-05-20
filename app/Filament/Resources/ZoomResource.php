@@ -27,7 +27,7 @@ class ZoomResource extends Resource
 {
     protected static ?string $model = Zoom::class;
 
-    protected static ?string $navigationIcon = 'heroicon-c-information-circle';
+    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
 
     protected static ?string $navigationLabel = 'Zoom Information';
 

@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Materizoom;
 use App\Models\Mentor;
+use App\Models\Testimoni;
 use App\Models\Zoom;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class GeneralController extends Controller
     {
         $kelasvideo = Course::where('published', 1)->latest()->take(4)->get();
         $zoom = Zoom::orderBy('id', 'desc')->latest()->take(4)->get();
-        return view('index', compact('kelasvideo', 'zoom'));
+        $testimoni = Testimoni::all();
+        return view('index', compact('kelasvideo', 'zoom', 'testimoni'));
     }
 
     public function about()

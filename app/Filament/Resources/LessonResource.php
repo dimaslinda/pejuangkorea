@@ -27,7 +27,7 @@ class LessonResource extends Resource
 {
     protected static ?string $model = Lesson::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-play-circle';
+    protected static ?string $navigationIcon = 'heroicon-o-play-circle';
 
     protected static ?string $navigationLabel = 'Content Videos Lesson';
 

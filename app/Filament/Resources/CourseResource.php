@@ -33,7 +33,7 @@ class CourseResource extends Resource
 {
     protected static ?string $model = Course::class;
 
-    protected static ?string $navigationIcon = 'heroicon-c-information-circle';
+    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
 
     protected static ?string $navigationLabel = 'E-Courses Information';
 

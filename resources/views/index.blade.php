@@ -344,93 +344,20 @@
                 <div class="flex flex-wrap justify-center gap-5">
                     <div class="py-20 swiper mySwiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="w-full max-w-xs p-4 bg-white border-2 shadow-2xl rounded-xl">
-                                    <img class="w-24 h-24 mx-auto rounded-full"
-                                        src="{{ asset('img/general/profil.png') }}" alt="Testimonial profile">
-                                    <div class="mt-4 text-center">
-                                        <p class="text-lg font-medium text-gray-700">Kim Jisoo</p>
-                                        <p class="mt-1 text-sm text-gray-500">Alumni Pejuang Korea Academy</p>
-                                        <p class="mt-4 text-gray-600">"Belajar di Pejuang Korea Academy sangat membantu
-                                            saya dalam
-                                            mempersiapkan diri untuk bekerja di Korea. Materi yang diberikan sangat
-                                            relevan dan
-                                            mudah dipahami."</p>
+                            @forelse ($testimoni as $item)
+                                <div class="swiper-slide">
+                                    <div class="w-full max-w-xs p-4 bg-white border-2 shadow-2xl rounded-xl">
+                                        <img class="w-24 h-24 mx-auto rounded-full"
+                                            src="{{ $item->getfirstMediaUrl('testimoni') }}" alt="Testimonial profile">
+                                        <div class="mt-4 text-center">
+                                            <p class="text-lg font-medium text-gray-700">{{ $item->name }}</p>
+                                            <p class="mt-1 text-sm text-gray-500">{{ $item->daerah }}</p>
+                                            <div class="mt-4 text-gray-600">{!! $item->testimoni !!}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="w-full max-w-xs p-4 bg-white border-2 shadow-2xl rounded-xl">
-                                    <img class="w-24 h-24 mx-auto rounded-full"
-                                        src="{{ asset('img/general/profil.png') }}" alt="Testimonial profile">
-                                    <div class="mt-4 text-center">
-                                        <p class="text-lg font-medium text-gray-700">Park Seo-joon</p>
-                                        <p class="mt-1 text-sm text-gray-500">Alumni Pejuang Korea Academy</p>
-                                        <p class="mt-4 text-gray-600">"Program yang ditawarkan sangat komprehensif dan
-                                            pengajarannya berkualitas. Saya mendapatkan banyak pengetahuan baru yang
-                                            bermanfaat
-                                            untuk karir saya di Korea."</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="w-full max-w-xs p-4 bg-white border-2 shadow-2xl rounded-xl">
-                                    <img class="w-24 h-24 mx-auto rounded-full"
-                                        src="{{ asset('img/general/profil.png') }}" alt="Testimonial profile">
-                                    <div class="mt-4 text-center">
-                                        <p class="text-lg font-medium text-gray-700">Park Seo-joon</p>
-                                        <p class="mt-1 text-sm text-gray-500">Alumni Pejuang Korea Academy</p>
-                                        <p class="mt-4 text-gray-600">"Program yang ditawarkan sangat komprehensif dan
-                                            pengajarannya berkualitas. Saya mendapatkan banyak pengetahuan baru yang
-                                            bermanfaat
-                                            untuk karir saya di Korea."</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="w-full max-w-xs p-4 bg-white border-2 shadow-2xl rounded-xl">
-                                    <img class="w-24 h-24 mx-auto rounded-full"
-                                        src="{{ asset('img/general/profil.png') }}" alt="Testimonial profile">
-                                    <div class="mt-4 text-center">
-                                        <p class="text-lg font-medium text-gray-700">Kim Jisoo</p>
-                                        <p class="mt-1 text-sm text-gray-500">Alumni Pejuang Korea Academy</p>
-                                        <p class="mt-4 text-gray-600">"Belajar di Pejuang Korea Academy sangat membantu
-                                            saya dalam
-                                            mempersiapkan diri untuk bekerja di Korea. Materi yang diberikan sangat
-                                            relevan dan
-                                            mudah dipahami."</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="w-full max-w-xs p-4 bg-white border-2 shadow-2xl rounded-xl">
-                                    <img class="w-24 h-24 mx-auto rounded-full"
-                                        src="{{ asset('img/general/profil.png') }}" alt="Testimonial profile">
-                                    <div class="mt-4 text-center">
-                                        <p class="text-lg font-medium text-gray-700">Park Seo-joon</p>
-                                        <p class="mt-1 text-sm text-gray-500">Alumni Pejuang Korea Academy</p>
-                                        <p class="mt-4 text-gray-600">"Program yang ditawarkan sangat komprehensif dan
-                                            pengajarannya berkualitas. Saya mendapatkan banyak pengetahuan baru yang
-                                            bermanfaat
-                                            untuk karir saya di Korea."</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="w-full max-w-xs p-4 bg-white border-2 shadow-2xl rounded-xl">
-                                    <img class="w-24 h-24 mx-auto rounded-full"
-                                        src="{{ asset('img/general/profil.png') }}" alt="Testimonial profile">
-                                    <div class="mt-4 text-center">
-                                        <p class="text-lg font-medium text-gray-700">Park Seo-joon</p>
-                                        <p class="mt-1 text-sm text-gray-500">Alumni Pejuang Korea Academy</p>
-                                        <p class="mt-4 text-gray-600">"Program yang ditawarkan sangat komprehensif dan
-                                            pengajarannya berkualitas. Saya mendapatkan banyak pengetahuan baru yang
-                                            bermanfaat
-                                            untuk karir saya di Korea."</p>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                            @endforelse
                         </div>
                         <div class="swiper-pagination paginat"></div>
                         <div class="swiper-button-next text-primary"></div>
