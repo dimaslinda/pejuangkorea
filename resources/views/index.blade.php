@@ -59,7 +59,7 @@
                                 belajar lebih <br> Asik dan <br> Interaktif
                             </p>
                             <div>
-                                <a href="/kelas"
+                                <a href="/kelaszoom"
                                     class="inline-block px-6 py-2 mt-4 text-sm text-white rounded-lg group-hover:bg-primary bg-secondary font-alata">Mulai
                                     Sekarang!</a>
                             </div>
@@ -203,7 +203,7 @@
                             SEABREG BENEFIT
                         </h2>
                         <p class="my-5 text-xl font-bold text-black font-arimo">
-                            Belajar & Proses kerja ke korea mandiri, siapa takut!?
+                            Ayo bergabung dengan barisan para Pejuangkorea, dan dapatkan banyak keuntungan!
                         </p>
                         <div class="flex justify-center md:justify-start">
                             <a href="https://wa.me/+821095204837" target="_blank"

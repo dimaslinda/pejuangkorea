@@ -17,12 +17,13 @@
                     Sekilas tentang pejuangkorea academy
                 </p>
                 <p class="mt-4 text-justify text-secondary font-alata">
-                    Oleh seorang pekerja migran indonesia yang saat ini bekerja dikorea selatan, Pejuangkorea Academy dibuat
-                    dengan tujuan mampu menjadi solusi atas ketidak merataannya fasilitas kelembagaan pendidikan bahasa
-                    korea di pulau luar jawa. Menyediakan fasilitas pendidikan bahasa korea berbasis online, dengan metode
-                    dan sistem terbaik yang terus dikembangkan. Pejuangkorea Academy juga bertujuan untuk membantu mereka
-                    yang ingin belajar bahasa korea sambil bekerja, tanpa perlu keluar dari pekerjaan. Bersama Pejuangkorea
-                    Academy, "Belajar bahasa korea mandiri, siapa takut!?"
+                    Pejuangkorea Academy adalah startup Edutech yang membantu generasi Gen Z lulusan SMA sederajat
+                    mewujudkan impian bekerja di Korea melalui program GtoGKorea. Dengan kurikulum komprehensif dan
+                    bimbingan ahli, kami mempersiapkan siswa untuk lulus ujian EPS-TOPIK dan meningkatkan kemampuan bahasa
+                    Korea. Kami juga memberikan support dan informasi mengenai peluang kerja di Korea serta panduan dalam
+                    menghadapi tantangan dan adaptasi di negara tersebut. Bergabunglah dengan Pejuangkorea Academy dan
+                    menjadi bagian dari perjalanan menuju masa depan yang cerah. Jadilah pejuang dan raih impian bekerja di
+                    Korea bersama kami!
                 </p>
             </div>
         </div>
