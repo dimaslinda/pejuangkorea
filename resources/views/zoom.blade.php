@@ -6,11 +6,6 @@
         <div class="container max-w-screen-xl px-4 py-8 mx-auto">
             <div id="myBtnContainer" class="flex flex-wrap justify-center gap-4 mb-8 md:justify-start md:flex-row font-alata">
                 <a href="/kelas"
-                    class="px-6 py-2 border-2 rounded-full cursor-pointer btn text-tertiary hover:text-white hover:bg-primary border-tertiary hover:border-primary font-alata"
-                    onclick="filterSelection('all')">
-                    Semua Kelas
-                </a>
-                <a href="/kelas"
                     class="px-6 py-2 border-2 rounded-full cursor-pointer btn text-tertiary hover:text-white hover:bg-primary border-tertiary hover:border-primary font-alata">
                     Semua Kelas
                 </a>

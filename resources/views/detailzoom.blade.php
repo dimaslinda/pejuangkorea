@@ -63,7 +63,8 @@
                         </div>
                         @if (Auth::check())
                             <div class="flex justify-center md:justify-start">
-                                <a href="#"
+                                <a href="https://wa.me/+821095204837?text=Halo%20saya%20ingin%20membeli%20materi%20{{ $zoom->name }}"
+                                    target="_blank"
                                     class="px-5 py-3 text-base font-bold text-center text-white uppercase transition-all rounded-lg transofrm hover:bg-primary font-alata bg-secondary">
                                     Beli Sekarang!</a>
                             </div>

@@ -74,12 +74,12 @@
                                 Kelas Video
                             </div>
                         </a>
-                        <a href="/dashboardzoom">
+                        {{-- <a href="/dashboardzoom">
                             <div
                                 class="font-bold hover:border-b-[3px] -mb-[2px] hover:text-primary hover:border-primary pb-3">
                                 Kelas Zoom
                             </div>
-                        </a>
+                        </a> --}}
                     </div>
 
                     <div class="p-10">

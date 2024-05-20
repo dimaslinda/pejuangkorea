@@ -24,6 +24,7 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'no_hp',
         'role',
+        'email_verified_at',
         'profile',
         'password',
     ];
@@ -59,5 +60,10 @@ class User extends Authenticatable implements FilamentUser
     public function invoice()
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    public function socialAccounts()
+    {
+        return $this->hasMany(SocialAccount::class);
     }
 }

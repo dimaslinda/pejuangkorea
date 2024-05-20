@@ -3,6 +3,7 @@
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,8 @@ Route::post('/prosescheckoutcourse', [InvoiceController::class, 'prosescheckoutc
 Route::get('/infopembayaran/{no_invoice}', [InvoiceController::class, 'infopembayaran'])->name('infopembayaran');
 Route::get('/konfirmasipembayaran/{no_invoice}', [InvoiceController::class, 'konfirmasipembayaran'])->name('konfirmasipembayaran');
 Route::post('/updateinvoice/{no_invoice}', [InvoiceController::class, 'updateinvoice'])->name('updateinvoice');
+Route::get('auth/{provider}', [SocialiteController::class, 'redirectToProvider']);
+Route::get('auth/{provider}/callback', [SocialiteController::class, 'handleProviderCallback']);
 
 
 
